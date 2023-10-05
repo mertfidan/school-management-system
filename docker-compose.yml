@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  postgres:
+      image: postgres:12.1
+      environment:
+          - POSTGRES_DB=mydb
+          - POSTGRES_USER=mertfidan
+          - POSTGRES_PASSWORD=123451
+      ports:
+          - "5432:5432"
+      logging:
+          options:
+            max-size: 10m #tek bir log dosyasının boyutu
+            max-file: "3" #log dosyası sayısı 4.de üzerine yazar
+      volumes:
+          - /home/mert/Desktop/SpringProject/demo/data:/var/lib/postgresql/data
+  pgadmin:
+      image: dpage/pgadmin4
+      environment:
+        - PGADMIN_DEFAULT_EMAIL=mertfidn@gmail.com
+        - PGADMIN_DEFAULT_PASSWORD=1231
+      ports:
+        - "5050:80"
